@@ -1,0 +1,44 @@
+﻿@page
+@model CO5227_J790290_1919281.Pages.Admin.CreateModel
+@{
+    ViewData["Title"] = "FoodCove - Create (Admin)";
+    Layout = "~/Pages/_Layout.cshtml";
+}
+
+<link href="~/CSS/Create_Admin.css" rel="stylesheet" />
+
+<div class="title_header">
+    <h1 class="create_admin">Create - Meal</h1>
+</div>
+
+<div class="container">
+    <form method="post" enctype="multipart/form-data" class="form">
+        <h4>Enter details of the Meals:</h4>
+        <hr />
+        <span asp-validation-for=" ML.Name"></span>
+        <div>Name:  <input asp-for="ML.Name" /></div>
+
+        <span asp-validation-for=" ML.Price"></span>
+        <div>Price:  <input asp-for="ML.Price" /></div>
+
+        <span asp-validation-for=" ML.Origin"></span>
+        <div>Origin:  <input asp-for="ML.Origin" /></div>
+
+        <span asp-validation-for=" ML.Type"></span>
+        <div>Type:  <input asp-for="ML.Type" /></div>
+
+        <span asp-validation-for=" ML.ImageDescription"></span>
+        <div>Image Description <input asp-for="ML.ImageDescription" /></div>
+
+        <div>
+            Upload Image:<br />
+            <input type="file" id="file1"
+                   name="file1"
+                   multiple="multiple" />
+        </div>
+
+        <input type="submit" />
+    </form>
+</div>
+
+

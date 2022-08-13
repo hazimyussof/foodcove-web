@@ -1,0 +1,35 @@
+﻿@page
+@model CO5227_J790290_1919281.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Pages/_Layout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<link href="~/CSS/Login.css" rel="stylesheet" />
+
+<div class="title_header">
+    <h1 class="login">Login</h1>
+</div>
+
+<div class="container">
+    <form method="post" class="form">
+        <h4>Use a local account to log in.</h4>
+        <hr />
+        <div asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="Input.Email"></label>
+            <input asp-for="Input.Email" />
+            <span asp-validation-for="Input.Email"></span>
+        </div>
+        <div>
+            <label asp-for="Input.Password"></label>
+            <input asp-for="Input.Password" />
+            <span asp-validation-for="Input.Password"></span>
+        </div>
+        <div>
+            <button type="submit">Log in</button>
+        </div>
+    </form>
+</div>
+

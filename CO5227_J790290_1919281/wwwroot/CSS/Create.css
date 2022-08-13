@@ -1,0 +1,20 @@
+﻿/* Header Section */
+.title_header {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create_admin {
+    background-image: url(../Images/wood.jpg);
+    border-radius: 28px;
+    text-align: center;
+    font-family: overpass-bold;
+    padding-top: 10px;
+    padding-right: 60px;
+    padding-bottom: 2px;
+    padding-left: 60px;
+    font-size: 64px;
+}

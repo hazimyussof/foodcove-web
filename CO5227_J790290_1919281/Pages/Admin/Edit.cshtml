@@ -1,0 +1,28 @@
+﻿@page "{id:int}"
+@model CO5227_J790290_1919281.Pages.Admin.EditModel
+@{
+    ViewData["Title"] = "FoodCove - Edit";
+    Layout = "~/Pages/_Layout.cshtml";
+}
+
+<h2>Edit Item - @Model.Item.Name</h2>
+<form method="post">
+    <div>
+        <input asp-for="Item.ID" type="hidden" />
+        <input asp-for="Item.Active" type="hidden" />
+        <label>Name</label>
+        <div><input asp-for="Item.Name" /></div>
+        <label>Price</label>
+        <div><input asp-for="Item.Price" /></div>
+        <label>Origin</label>
+        <div><input asp-for="Item.Origin" /></div>
+        <label>Type</label>
+        <div><input asp-for="Item.Type" /></div>
+        <label>Image Description</label>
+        <div><input asp-for="Item.ImageDescription" /></div>
+    </div>
+    <div>
+        <button type="submit" asp-page-handler="Save">Save</button>
+    </div>
+</form>
+

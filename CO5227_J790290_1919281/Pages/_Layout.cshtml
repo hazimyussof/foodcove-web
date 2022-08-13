@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using CO5227_J790290_1919281.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/CSS/StyleSheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="header">
+        <div class="inner-header">
+            <nav class="navigation">
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    <i class="fas fa-bars"></i>
+                </label>
+                <label class="restaurant_name">FoodCove</label>
+                <ul>
+                    @if (!SignInManager.IsSignedIn(User))
+                    {
+                        <li><a asp-page="/Index" class="Active">Home</a></li>
+                        <li><a asp-page="/Menu">Menu</a></li>
+                        <li><a asp-page="/About">About</a></li>
+                        <li><a asp-page="/Contact">Contact</a></li>
+                        <li><a asp-page="/Account/Login">Log in</a></li>
+                        <li><a asp-page="/Account/Register">Register</a></li>
+                        <li><a asp-page="/Checkout"><span style="padding-right: 5px">Checkout</span> <i class="material-icons">shopping_basket</i></a></li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li>
+                                <form asp-page="/Account/Logout" method="post">
+                                    <button type="submit">Logout</button>
+                                </form>
+                            </li>
+                        }
+                    }
+                    else
+                    {
+                        <li><a asp-page="/Index" class="Active">Home</a></li>
+                        <li><a asp-page="/Menu">Menu</a></li>
+                        <li><a asp-page="/About">About</a></li>
+                        <li><a asp-page="/Contact">Contact</a></li>
+                        <li><a asp-page="/Checkout"><span style="padding-right: 5px">Checkout</span> <i class="material-icons">shopping_basket</i></a></li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li><a asp-page="/Admin/Create">Create (Admin)</a></li>
+                            <li><a asp-page="/Admin/Menu">Menu (Admin)</a></li>
+                            <!-- <li><a href="http://validator.w3.org/check?uri=" + document.URL>Validate HTML</a></li> -->
+                            <!-- <li><a href="https://jigsaw.w3.org/css-validator/validator?uri=" + document.URL">Validate CSS</a></li> -->
+                        }
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li>
+                                <form asp-page="/Account/Logout" method="post">
+                                    <button type="submit">Logout</button>
+                                </form>
+                            </li>
+                        }
+                    }
+                </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div>
+                    @RenderBody()
+                </div>
+            </body>
+            </html>

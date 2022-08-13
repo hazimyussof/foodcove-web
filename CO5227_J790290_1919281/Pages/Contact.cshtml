@@ -1,0 +1,61 @@
+﻿@page
+@model CO5227_J790290_1919281.Pages.ContactModel
+@{
+    ViewData["Title"] = "FoodCove - Contact";
+    Layout = "~/Pages/_Layout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<link href="~/CSS/Contact.css" rel="stylesheet" />
+
+<!-- EmailJS JavaScript -->
+<script src="./Scripts/emailJS.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function () {
+        emailjs.init("user_CRPSlMZAjWgPAOHw8E04E");
+    })();
+</script>
+
+<div class="title_header">
+    <h1 class="contact">Contact</h1>
+</div>
+
+<div class="container">
+    <div class="info_section">
+        <div class="address">
+            <h1>Address</h1>
+            <div class="info_line"></div>
+            <h2>38  rue du Président Roosevelt, SARTROUVILLE, 78500</h2>
+        </div>
+        <div class="phone">
+            <h1>Phone</h1>
+            <div class="info_line"></div>
+            <h2>01.28.70.11600</h2>
+        </div>
+        <div class="email">
+            <h1>Email</h1>
+            <div class="info_line"></div>
+            <h2>foodcove@gmail.com</h2>
+        </div>
+    </div>
+    <div class="reservation_section">
+        <h1 class="reservation_header">Make A Reservation</h1>
+        <form>
+            <button class="reservation_button" formaction="https://www.opentable.com/">Find a table</button>
+        </form>
+        <p class="reservation_info">
+            &#9432; Call 01.28.70.11600 from 5am – 11pm daily, or book online.
+            Reservations required for parties of 6 or more.
+        </p>
+    </div>
+    <div class="feedback">
+        <h1>Feedback</h1>
+        <h4><span>Send us a feeback </span> <i class="material-icons">feedback</i></h4>
+        <h4 class="name_text">Enter your name:</h4>
+        <input class="name_input" type="text" id="fromName" placeholder="Name">
+        <h4 class="msg_text">Message:</h4>
+        <input class="msg_input" type="text" id="msg" placeholder="Enter your message">
+        <button onclick="sendMail()">Send Email</button>
+    </div>
+</div>

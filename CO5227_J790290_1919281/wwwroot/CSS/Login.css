@@ -1,0 +1,71 @@
+﻿/* Header Section */
+.title_header {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    background-image: url(../Images/wood.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    font-family: overpass-bold;
+    height: 150px;
+    padding: 67px 50px;
+    font-size: 28px;
+}
+
+.container {
+    margin: auto;
+    justify-content: center;
+}
+
+.form {
+    max-width: 500px;
+    margin: 2rem auto;
+    border: 3px solid #101010;
+    padding: 2rem;
+    display: block;
+}
+
+.form hr {
+    margin-bottom: 20px;
+}
+
+.form h4 {
+    text-align: center;
+    font-family: Rubik-Regular;
+}
+
+.form label {
+    display: block;
+}
+
+.form input {
+    display: block;
+    width: 100%;
+}
+
+.form button {
+    border: 1px solid #101010;
+    background: transparent;
+    color: #101010;
+    margin-top: 10px;
+    width: 50px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: Rubik-Regular;
+}
+
+/* Media Query Section */
+
+/* For Mobile */
+@media screen and (max-width: 700px) {
+    .form {
+        width: 90%;
+    }
+}

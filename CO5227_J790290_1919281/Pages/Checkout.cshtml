@@ -1,0 +1,62 @@
+﻿@page
+@model CO5227_J790290_1919281.Pages.CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Pages/_Layout.cshtml";
+}
+@using CO5227_J790290_1919281.Data
+@using Microsoft.Extensions.Options
+@inject IOptions<StripeSettings> Stripe
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<link href="~/CSS/Checkout.css" rel="stylesheet" />
+
+<div class="title_header">
+    <h1 class="checkout">Checkout</h1>
+</div>
+
+<div class="container">
+    <form method="post">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th></th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    var subtotal = item.Price * item.Quantity;
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Price.ToString("C")</td>
+                        <td>
+                            <button class="inc" type="submit" asp-page-handler="Plus" asp-route-itemID="@item.ID">+</button>
+                            <button class="inc" type="submit" asp-page-handler="Minus" asp-route-itemID="@item.ID">-</button>
+                        </td>
+                        <td>@item.Quantity</td>
+                        <td>@subtotal.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>Total = @Model.Total.ToString("C")</div>
+    </form>
+
+    <form asp-page-handler="Charge" asp-route-amount="@Model.AmountPayable" method="POST">
+        <script src="//checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                data-key="@Stripe.Value.PublishableKey"
+                data-locale="auto"
+                data-description="CO5227 FoodCove Charge"
+                data-amount="@Model.AmountPayable"
+                data-currency="GBP">
+        </script>
+    </form>
+</div>
+

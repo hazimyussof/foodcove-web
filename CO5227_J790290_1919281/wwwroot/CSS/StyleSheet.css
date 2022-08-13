@@ -1,0 +1,188 @@
+﻿/* Font Section */
+@font-face {
+    font-family: FORMA;
+    src: url('../Fonts/FORMA.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: FOUNDRY-FONT PACK;
+    src: url('../Fonts/FOUNDRY-FONT PACK.OTF') format('opentype');
+}
+
+@font-face {
+    font-family: GFSNeohellenicBold;
+    src: url('../Fonts/GFSNeohellenicBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: TheHistoriaDemo;
+    src: url('../Fonts/TheHistoriaDemo.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Rubik-Regular;
+    src: url('../Fonts/Rubik-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: overpass-bold;
+    src: url(../Fonts/overpass-bold.otf) format('opentype');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+/* Header Section */
+.header {
+    width: 100%;
+    height: 85px;
+    display: flex;
+    background-color: #101010;
+}
+
+.inner-header {
+    width: 1100px;
+    height: 100%;
+    display: flex;
+    margin: auto;
+    align-items: center;
+}
+
+/* Navigation Section */
+.navigation {
+    background-color: #101010;
+    height: 85px;
+    width: 100%;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.restaurant_name {
+    color: white;
+    height: 100%;
+    vertical-align: middle;
+    padding: 0px 0px 0px 20px;
+    font-family: 'FOUNDRY-FONT PACK';
+    font-size: 54px;
+    float: left;
+}
+
+nav ul {
+    float: right;
+    margin-right: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 12px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-family: Rubik-Regular;
+}
+
+a.active, a:hover {
+    background: grey;
+    transition: .5s;
+}
+
+/* Icon Section */
+.material-icons {
+    text-align: center;
+    transform: translateY(30%);
+    color: white;
+}
+
+/* Button Section */
+.checkbtn {
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+.navigation button {
+    border: 1px solid red;
+    background: transparent;
+    color: red;
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: Rubik-Regular;
+    margin-right: 20px;
+}
+
+/* Scrollbar Section */
+:root {
+    scrollbar-color: rgb(210,210,210) rgb(46,54,69) !important;
+    scrollbar-width: thin !important;
+}
+
+/* Queries Secton */
+
+/* Tablet */
+@media (max-width: 1100px) {
+    .navigation {
+        position: relative;
+        z-index: 1000;
+    }
+    .checkbtn {
+        display: block;
+        font-size: 30px;
+        color: white;
+        float: right;
+        line-height: 80px;
+        margin-right: 40px;
+        cursor: pointer;
+    }
+    ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #101010;
+        top: 80px;
+        left: 100%;
+        text-align: center;
+        transition: all .5s;
+    }
+    nav ul li {
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+
+    nav ul li a {
+        font-size: 20px;
+    }
+    a:hover, a.active {
+        background: none;
+        color: grey;
+    }
+    #check:checked ~ ul {
+        left: 0;
+    }
+}
+
+/* Phone */
+@media (max-width: 500px) {
+    nav ul li {
+        margin: 30px 0;
+    }
+    nav ul li a {
+        font-size: 15px;
+    }
+}

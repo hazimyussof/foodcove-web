@@ -1,0 +1,57 @@
+﻿@page
+@model CO5227_J790290_1919281.Pages.Admin.MenuModel
+@{
+    ViewData["Title"] = "FoodCove - Menu (Admin)";
+    Layout = "~/Pages/_Layout.cshtml";
+}
+
+<link href="~/CSS/Menu_Admin.css" rel="stylesheet" />
+
+<div class="title_header">
+    <h1 class="menu_admin">Menu - Admin</h1>
+</div>
+
+<div class="container">
+    <form method="post">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Origin</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Active</th>
+                    <th>Edit / Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ML in Model.Meal)
+                {
+                    <tr>
+                        <td>@ML.Name</td>
+                        <td>@ML.Origin</td>
+                        <td>@ML.Type</td>
+                        <td>@ML.Price.ToString("C")</td>
+                        <td>@ML.Active</td>
+                        <td>
+                            <a asp-page="/Admin/Edit" asp-route-id="@ML.ID">edit</a>
+                            <button type="submit" asp-page-handler="Delete" asp-route-itemID="@ML.ID">delete</button>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <div>Search  <input asp-for="Search" /></div>
+        <button type="submit" asp-page-handler="Search">Submit</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+

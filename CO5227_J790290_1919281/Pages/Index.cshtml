@@ -1,0 +1,80 @@
+﻿@page
+@model CO5227_J790290_1919281.Pages.IndexModel
+@{
+    ViewData["Title"] = "FoodCove - Home";
+    Layout = "~/Pages/_Layout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Identity
+@using CO5227_J790290_1919281.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="~/CSS/Index.css" rel="stylesheet" />
+
+<main>
+    <section class="content">
+        <div class="column">
+            <div class="slideshow">
+                <div id="slideshow_content">
+                    <figure>
+                        <img src="~/Images/slideshow1.jpg" alt="Slideshow Content 1" />
+                        <img src="~/Images/slideshow2.jpg" alt="Slideshow Content 2" />
+                        <img src="~/Images/slideshow3.jpg" alt="Slideshow Content 3" />
+                        <img src="~/Images/slideshow4.jpg" alt="Slideshow Content 4" />
+                        <img src="~/Images/slideshow5.jpg" alt="Slideshow Content 5" />
+                    </figure>
+                </div>
+            </div>
+            <div class="static">
+                <img class="static1" src="~/Images/static1.jpg" alt="Static Content 1" />
+                <img class="static2" src="~/Images/static2.jpg" alt="Static Content 2" />
+            </div>
+            <div class="opening_hours">
+                <span style="font-size: 42px"></span>
+                <h3>Monday - Thursday</h3>
+                <p>5pm - 9pm</p>
+                <h3>Friday</h3>
+                <p>5pm - 9pm</p>
+                <h3>Saturday</h3>
+                <p>10am - 9pm</p>
+                <h3>Sunday</h3>
+                <p>10am - 9pm</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer Section -->
+@if (!SignInManager.IsSignedIn(User))
+{
+    <footer>
+        <div class="creator_footer">
+            <a class="First">Site created by <span class="Second"><strong>1919281 / J79020</strong></span></a>
+        </div>
+        <div class="copyright_footer">
+            <p><span>&#169;</span> FoodCove</p>
+        </div>
+        <div class="owner_footer">
+            <p>Property of FoodCove and Restaurant</p>
+        </div>
+    </footer>
+}
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+    <footer>
+        <div class="copyright_footer">
+            <p style="color:RED">ADMINISTRATOR</p>
+        </div>
+    </footer>
+}
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Member"))
+{
+    <footer>
+        <div class="copyright_footer">
+            <p>@UserManager.GetUserName(User)</p>
+        </div>
+    </footer>
+}
+
